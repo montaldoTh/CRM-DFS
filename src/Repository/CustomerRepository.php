@@ -4,6 +4,7 @@ namespace App\Repository;
 use App\Entity\Customer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query;
 
 /**
  * @extends ServiceEntityRepository<Customer>
@@ -36,6 +37,10 @@ class CustomerRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function getPaginationQuery() : Query{
+        return $this->createQueryBuilder('c')->getQuery();
     }
 
 //    /**

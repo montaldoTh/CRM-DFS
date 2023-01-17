@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+
+{% block navbar %}
+
+<div class="navbar-admin position-absolute d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+        <span class="fs-4">CRM DFS</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a href="/customers" class="nav-link text-white" aria-current="page">
+                Customer List
+            </a>
+        </li>
+        <li>
+            <a href="/company" class="nav-link text-white">
+                Company List
+            </a>
+        </li>
+    </ul>
+    <hr>
+    <a class="nav-link text-white" href="{{ path('app_logout') }}">Logout</a>
+</div>
+
+{% endblock %}

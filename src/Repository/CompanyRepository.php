@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Company;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query;
+
 
 /**
  * @extends ServiceEntityRepository<Company>
@@ -38,6 +40,11 @@ class CompanyRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function getPaginationQuery() : Query{
+        return $this->createQueryBuilder('cy')->getQuery();
+    }
+
 
 //    /**
 //     * @return Company[] Returns an array of Company objects

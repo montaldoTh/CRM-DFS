@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '/navbar/navbar.html.twig' %}
 
 {% block title %}Customers List{% endblock %}
 
@@ -9,14 +9,14 @@
                 <table class="table">
                     <thead>
                         <tr class="bg-secondary">
-                            <td>id</td>
+                            <td>{{ knp_pagination_sortable(pagination, 'Id', 'c.id') }}</td>
                             <td>prenom</td>
                             <td>nom</td>
                             <td>mail</td>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for customer in customers %}
+                        {% for customer in pagination %}
                         <tr>
                             <td>{{ customer.id }}</td>
                             <td>{{ customer.firstname }}</td>
@@ -27,7 +27,7 @@
                     </tbody>
                 </table>
 
-                <button class="btn btn-primary">Ajouter</button>
+                {{ knp_pagination_render(pagination) }}
         </div>
     </div>
 </div>

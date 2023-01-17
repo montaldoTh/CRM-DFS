@@ -2,20 +2,19 @@
 
 namespace App\Controller;
 
-use App\Repository\CustomerRepository;
+use App\Repository\CompanyRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CustomerController extends AbstractController
+class CompanyController extends AbstractController
 {
-    #[Route('/customers', name: 'app_customer')]
-    public function index(CustomerRepository $customerRepository, PaginatorInterface $paginator, Request $request): Response
+    #[Route('/company', name: 'app_company')]
+    public function index(CompanyRepository $companyRepository, PaginatorInterface $paginator, Request $request): Response
     {
-
-        $query = $customerRepository->getPaginationQuery();
+        $query = $companyRepository->getPaginationQuery();
 
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
@@ -23,10 +22,8 @@ class CustomerController extends AbstractController
             10 /*limit per page*/
         );
 
-        return $this->render('customer/index.html.twig', [
+        return $this->render('company/index.html.twig', [
             'pagination' => $pagination,
         ]);
     }
-
-
 }

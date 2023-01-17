@@ -1,0 +1,39 @@
+{% extends '/navbar/navbar.html.twig' %}
+
+{% block title %}Customers List{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 py-5">
+                <table class="table">
+                    <thead>
+                        <tr class="bg-secondary">
+                            <td>{{ knp_pagination_sortable(pagination, 'Id', 'cy.id') }}</td>
+                            <td>name</td>
+                            <td>siret</td>
+                            <td>street</td>
+                            <td>city</td>
+                            <td>zipcode</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for company in pagination %}
+                        <tr>
+                            <td>{{ company.id }}</td>
+                            <td>{{ company.name }}</td>
+                            <td>{{ company.siret }}</td>
+                            <td>{{ company.street }}</td>
+                            <td>{{ company.city }}</td>
+                            <td>{{ company.zipcode }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
